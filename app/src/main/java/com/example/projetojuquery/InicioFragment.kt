@@ -50,7 +50,7 @@ class InicioFragment : Fragment() {
             val login = edtLoginAdm.text.toString()
             val senha = edtSenhaAdm.text.toString()
 
-            if (login == "admin" && senha == "adm") {
+            if (login == "adm" && senha == "adm") {
                 Toast.makeText(contexto, "Login bem-sucedido!", Toast.LENGTH_SHORT).show()
                 val intent = Intent(contexto, AdmInicial::class.java)
                 startActivity(intent)

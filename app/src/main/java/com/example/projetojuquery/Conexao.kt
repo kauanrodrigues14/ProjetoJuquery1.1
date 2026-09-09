@@ -39,16 +39,15 @@ class bdConnect(contexto: Context) : SQLiteOpenHelper(contexto, NOME_DO_BANCO_DE
         bd.execSQL(CRIAR_TABELA_ALERTA)
 
         val INSERIR_BOMBEIRO =
-            ("INSERT INTO Bombeiro VALUES(\"1\",\"Bombeiro\",\"21312312312\",\"projeto\",\"Bombeiro\",\"juquery\")")
+            ("INSERT INTO Bombeiro VALUES(\"1\",\"Bombeiro\",\"21312312312\",\"adm\",\"Bombeiro\",\"adm\")")
         bd.execSQL(INSERIR_BOMBEIRO)
-
+        // Login de teste
     }
     override fun onUpgrade(bd: SQLiteDatabase, versaoAntiga: Int, novaVersao: Int) {
         bd.execSQL("DROP TABLE IF EXISTS Bombeiro")
         bd.execSQL("DROP TABLE IF EXISTS Sensor")
         bd.execSQL("DROP TABLE IF EXISTS Alerta")
         onCreate(bd)
-
 
     }
 

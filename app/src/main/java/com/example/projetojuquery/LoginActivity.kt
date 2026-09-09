@@ -19,6 +19,9 @@ class LoginActivity : AppCompatActivity() {
         val btnLogar = findViewById<Button>(R.id.btnLogar)
         val bd = bdConnect(this)
         val bdRead = bd.readableDatabase
+
+        /*
+        Teste de conexão com o banco
         val cursor = bdRead.rawQuery("SELECT * FROM Bombeiro", null)
 
         if (cursor != null) {
@@ -33,21 +36,24 @@ class LoginActivity : AppCompatActivity() {
         } else {
             Log.d("Conexão com o Banco de Dados", "Falha ao efetivar a conexão.")
         }
-
+*/      val edtLogin = findViewById<EditText>(R.id.editText)
+        val edtSenha = findViewById<EditText>(R.id.edtSenha)
 
         btnLogar.setOnClickListener {
 
             Log.d("DEBUG", "Botão de login pressionado")
-            val edtLogin = findViewById<EditText>(R.id.editText)
-            val edtSenha = findViewById<EditText>(R.id.edtSenha)
+
 
             val login = edtLogin.text.toString()
             val senha = edtSenha.text.toString()
 
 
 
-            if (login.isEmpty() || senha.isEmpty()) {
+            if (login.isBlank() || senha.isBlank()) {
                 Toast.makeText(this, "Login e senha não podem estar vazios.", Toast.LENGTH_SHORT).show()
+                edtLogin.text.clear()
+                edtSenha.text.clear()
+                edtLogin.requestFocus()
             } else {
                 val autenticado = bd.autenticarUsuario(login, senha)
 
@@ -56,6 +62,9 @@ class LoginActivity : AppCompatActivity() {
                     val intent = Intent(this, PaginaInicial::class.java)
                     startActivity(intent)
                 } else {
+                    edtLogin.text.clear()
+                    edtSenha.text.clear()
+                    edtLogin.requestFocus()
                     Toast.makeText(this, "Falha no login. Por favor, tente novamente.", Toast.LENGTH_SHORT).show()
                 }
             }

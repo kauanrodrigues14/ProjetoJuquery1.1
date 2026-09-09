@@ -7,7 +7,7 @@ previnir e evitar queimadas florestais.
 
 • CRUD de Usúarios e Sensores
 • Informações do tempo e clima local
-• Geolocalização en tempo real
+• Geolocalização em tempo real
 • Envio de alertas
 
 ## 🌱Objetivo
