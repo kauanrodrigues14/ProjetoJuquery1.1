@@ -3,6 +3,7 @@ import java.util.Properties
 plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsKotlinAndroid)
+    id("com.google.gms.google-services") version "4.5.0" apply false
 }
 
 val localProperties = Properties()
@@ -70,7 +71,9 @@ kotlin {
     }
 
 dependencies {
-
+    implementation(platform("com.google.firebase:firebase-bom:34.19.0"))
+    implementation("com.google.firebase:firebase-analytics")
+    implementation("com.google.firebase:firebase-firestore")
     implementation("com.mapbox.maps:android-ndk27:11.30.0")
     implementation("androidx.recyclerview:recyclerview:1.4.0")
     implementation("com.google.android.material:material:1.14.0")
@@ -81,6 +84,7 @@ dependencies {
     implementation(libs.material)
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
+    implementation(libs.firebase.firestore.ktx)
     testImplementation(libs.junit)
     androidTestImplementation("androidx.test.ext:junit:1.2.1")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.6.1")

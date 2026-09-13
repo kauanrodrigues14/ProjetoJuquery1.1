@@ -1,8 +1,13 @@
 package com.example.projetojuquery
 import android.content.ContentValues
+import android.content.ContentValues.TAG
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
+import android.util.Log
+import com.google.firebase.Firebase
+import com.google.firebase.firestore.firestore
+
 
 class bdConnect(contexto: Context) : SQLiteOpenHelper(contexto, NOME_DO_BANCO_DE_DADOS, null, VERSAO_DO_BANCO_DE_DADOS) {
 
@@ -10,6 +15,26 @@ class bdConnect(contexto: Context) : SQLiteOpenHelper(contexto, NOME_DO_BANCO_DE
         private const val VERSAO_DO_BANCO_DE_DADOS = 8
         private const val NOME_DO_BANCO_DE_DADOS = "projetojuquery.db"
     }
+
+    /*
+    fun onCreateFB(db : Firebase) {
+
+        val db = Firebase.firestore
+        val user = hashMapOf(
+            "primeiroNome" to "kauan"
+
+        )
+        db.collection("users").add(user).addOnSuccessListener { documentReference -> Log.d(TAG, "Adicionado com id: ${documentReference.id}")}
+            .addOnFailureListener { e -> Log.w(TAG, "Error.", e) }
+
+
+    }
+
+    */
+
+
+
+
 
     override fun onCreate(bd: SQLiteDatabase) {
         val CRIAR_TABELA_BOMBEIRO = ("CREATE TABLE Bombeiro(" +
